@@ -1,6 +1,3 @@
-# Lefthook configuration for git hooks
-# https://github.com/evilmartians/lefthook
-
 pre-commit:
   parallel: false
   commands:

@@ -93,53 +93,6 @@ Verified locally:
 
 * **ci:** migrate to unified CI/CD with OIDC authentication ([7c5a948](https://github.com/maloma7/bun-osv-scanner/commit/7c5a9487495506095e9cc6a8ef16443f1a8fc1c7))
 
-<!--
-Copyright (c) 2025 maloma7. All rights reserved.
-SPDX-License-Identifier: MIT
--->
-
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
-### BREAKING CHANGE
-- Migrated from manual release workflow to automated semantic-release
-- Release process now triggered automatically on push to main
-- Conventional commit format now required (feat/fix/docs/etc)
-
-### Added
-- Unified CI/CD workflow with semantic-release automation
-- OIDC authentication for npm (no more token management)
-- Automatic provenance generation on npm packages
-- TruffleHog secret scanning in CI
-- OSV vulnerability scanning in CI
-- Comprehensive release rules for 11 commit types
-
-### Changed
-- Domain updated: bun-osv-scanner.com → osv.bun-security-scanner.com
-- Logger refactored to use centralized ENV constants from constants.ts
-- Biome configured to respect VCS ignore files (useIgnoreFile: true)
-- Automatic version bumping from commit types (feat→minor, fix→patch, BREAKING→major)
-- Automatic CHANGELOG.md generation and Git commit
-- Automatic GitHub releases with npm tarball assets
-- Automatic npm publishing with provenance attestations (via OIDC)
-
-### Removed
-- Manual release.yml workflow (233 lines)
-- Tag-triggered publish.yml workflow (148 lines)
-- Copyright headers from config files for cleaner configs
-
-### Security
-- OIDC eliminates long-lived npm token storage and rotation
-- Automatic npm package provenance attestations
-- Minimal permission model per workflow job
-- persist-credentials:false in checkout steps
-
 ## [1.0.1] - 2025-01-03
 
 ### Added
@@ -185,7 +138,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implemented branch validation to prevent accidental releases from feature branches
 - Added package verification step to validate contents before npm publish
 
-## [1.0.0] - 2024-10-13
+## [1.0.0] - 2025-10-13
 
 ### Added
 - **Complete OSV Scanner Implementation**
@@ -249,7 +202,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Security & Reliability**
   - No hardcoded credentials, API keys, or sensitive information
   - Comprehensive input validation and sanitization using Zod schemas
-  - Safe error handling without information leakage in logs or responses  
+  - Safe error handling without information leakage in logs or responses
   - HTTPS-only communication with proper headers and user agent identification
 
 ### Configuration & Environment
@@ -289,7 +242,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Performance Enhancements**
   - Optimized API usage patterns reduce unnecessary network calls by up to 90%
-  - Smart deduplication prevents redundant vulnerability queries  
+  - Smart deduplication prevents redundant vulnerability queries
   - Concurrent processing with appropriate concurrency limits
   - Efficient resource cleanup and memory management
 
@@ -301,7 +254,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - No sensitive information logged or exposed in error messages
   - Fail-safe design ensures scanner issues never compromise installation security
 
-- **API Security** 
+- **API Security**
   - Proper user agent identification for OSV.dev API usage tracking
   - Rate limiting respect with retry backoff to prevent API abuse
   - Input validation prevents injection or malformed data processing
@@ -327,10 +280,3 @@ For integration into existing Bun projects:
 1. Install: `bun add -d bun-osv-scanner`
 2. Configure in `bunfig.toml`: `[install.security]\nscanner = "bun-osv-scanner"`
 3. Optional: Set environment variables for custom configuration
-
----
-
-**Last Updated**: November 3, 2024
-**Version**: 1.0.1
-
-*This changelog is a living document and will be updated as the project evolves and new releases are made.*
